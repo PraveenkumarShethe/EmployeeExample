@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface EmpRepository extends CrudRepository<Employees, Long> {
 
-    List<Employees> findByDepartment(long id);
+//    List<Employees> findByDepartment(long id);
 
 }

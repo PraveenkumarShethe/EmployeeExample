@@ -88,12 +88,12 @@ public class DepartmentController {
         empRepository.save(updateDepartmentEmp.get());
     }
 
-    @RequestMapping(name = "/empbydepart",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @Transactional(Transactional.TxType.NEVER)
-    public List<Employees> getAllEmployeeOfDepartment(@RequestBody Long id) {
-        Optional<Department> department = departmentRepository.findById(id);
-        return empRepository.findByDepartment(id);
-    }
+//    @RequestMapping(name = "/empbydepart",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.OK)
+//    @Transactional(Transactional.TxType.NEVER)
+//    public List<Employees> getAllEmployeeOfDepartment(@RequestBody Long id) {
+//        Optional<Department> department = departmentRepository.findById(id);
+//        return empRepository.findByDepartment(id);
+//    }
 
 }
