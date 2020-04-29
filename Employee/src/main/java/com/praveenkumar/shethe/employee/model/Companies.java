@@ -1,8 +1,12 @@
 package com.praveenkumar.shethe.employee.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * Created by Praveenkumar on date: 4/28/2020.
@@ -16,6 +20,9 @@ public class Companies extends AbstractEntity{
 
     @Column(name = "email_domain")
     private String emailDomain;
+
+    @OneToMany
+    private List<Employees> employees;
 
     public String getCompanyName() {
         return companyName;
@@ -31,5 +38,13 @@ public class Companies extends AbstractEntity{
 
     public void setEmailDomain(String emailDomain) {
         this.emailDomain = emailDomain;
+    }
+
+    public List<Employees> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employees> employees) {
+        this.employees = employees;
     }
 }

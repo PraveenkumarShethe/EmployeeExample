@@ -79,8 +79,6 @@ public class DepartmentController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void updateEmployeeWithDepartment(@RequestBody Employees employees){
-        System.out.println("1st value ===============================================================================================>"+employees.getId());
-        System.out.println("2nd value ================================================================================================>"+employees.getDepartment().getId());
         Optional<Employees> updateDepartmentEmp = empRepository.findById(employees.getId());
         System.out.println(updateDepartmentEmp);
         Optional<Department> department = departmentRepository.findById(employees.getDepartment().getId());
@@ -88,12 +86,11 @@ public class DepartmentController {
         empRepository.save(updateDepartmentEmp.get());
     }
 
-//    @RequestMapping(name = "/empbydepart",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.OK)
-//    @Transactional(Transactional.TxType.NEVER)
-//    public List<Employees> getAllEmployeeOfDepartment(@RequestBody Long id) {
-//        Optional<Department> department = departmentRepository.findById(id);
-//        return empRepository.findByDepartment(id);
-//    }
+/*    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @Transactional(Transactional.TxType.NEVER)
+    public Optional<Employees> getDepartmentEmployee(@PathVariable("id") Long id) {
+        return departmentRepository.findById(id).get().get;
+    }*/
 
 }

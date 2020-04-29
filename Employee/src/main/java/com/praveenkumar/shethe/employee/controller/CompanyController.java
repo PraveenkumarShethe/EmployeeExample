@@ -1,6 +1,7 @@
 package com.praveenkumar.shethe.employee.controller;
 
 import com.praveenkumar.shethe.employee.model.Companies;
+import com.praveenkumar.shethe.employee.model.Employees;
 import com.praveenkumar.shethe.employee.repo.CompaniesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -63,5 +65,15 @@ public class CompanyController {
         companiesRepository.save(companies);
     }
 
-
+    /**
+     * @return An iterable of the list of Employees without filter
+     * Http.ok will be returned{@code 200 OK}.
+     * Http.NOT_FOUND will be returned if not found {@code 404 Not Found}.
+     */
+    @RequestMapping(value = "/emp", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @Transactional(Transactional.TxType.NEVER)
+    public Iterable<Companies> getAllCompaniesEmployee() {
+        return companiesRepository.findAll();
+    }
 }

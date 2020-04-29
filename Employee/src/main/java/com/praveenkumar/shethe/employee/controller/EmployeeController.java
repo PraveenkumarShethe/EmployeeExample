@@ -1,5 +1,6 @@
 package com.praveenkumar.shethe.employee.controller;
 
+import com.praveenkumar.shethe.employee.model.Companies;
 import com.praveenkumar.shethe.employee.model.Employees;
 import com.praveenkumar.shethe.employee.repo.CompaniesRepository;
 import com.praveenkumar.shethe.employee.repo.EmpRepository;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -68,5 +70,14 @@ public class EmployeeController {
         empRepository.save(employees);
     }
 
+    @RequestMapping(value = "/emp/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @Transactional(Transactional.TxType.NEVER)
+    public List<Employees> getCompanyEmployee(@PathVariable("id") Long id) {
+        Companies companies = companiesRepository.findById(id).get();
+        List<Employees> employees = companies.getEmployees();
+
+        return companiesRepository.findById(id).get().getEmployees();
+    }
 
 }

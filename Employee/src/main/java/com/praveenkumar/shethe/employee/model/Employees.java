@@ -2,10 +2,9 @@ package com.praveenkumar.shethe.employee.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
 
 /**
  * Created by Praveenkumar on 4/28/2020.
@@ -21,6 +20,7 @@ public class Employees extends AbstractEntity {
     @Column(name = "email")
     private String email;
     @ManyToOne(targetEntity = Companies.class)
+    @JoinColumn(name = "companies_id")
     private Companies companies;
     @ManyToOne(targetEntity = Department.class)
     private Department department;
