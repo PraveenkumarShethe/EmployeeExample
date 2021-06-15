@@ -1,2 +1,5 @@
 interview/.idea/.gitignore
 interview/interview.iml
+Employee/.idea/.gitignore
+Employee/.gradle/6.3/gc.properties
+Employee/.gradle/6.3/executionHistory/executionHistory.lock
